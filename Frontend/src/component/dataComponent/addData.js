@@ -10,10 +10,10 @@ const [person, setPerson] = useState(
 
 const clickHandler = e => {
 	e.preventDefault();
-	 axios.post('http://localhost:5000/routes/post',person)
-     setPerson({name: '',
+	 axios.post('http://localhost:5000/routes/post',person).then(setPerson({name: '',
 	age: 0,
-    salary : 0})
+    salary : 0}))
+     
 };
 
 const changeHandler = e => {
@@ -56,6 +56,7 @@ return (
 		/>
 	</label>
 	<button>Submit</button>
+	<button type="reset">Reset</button>
 	</form>
 
 </div>
