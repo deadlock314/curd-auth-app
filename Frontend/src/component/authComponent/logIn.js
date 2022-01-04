@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React ,{useState} from 'react';
 
- function logIn() {
+ function LogIn() {
     
         const [user ,setUser] = useState({email:'' ,password:''});
 
@@ -26,4 +26,4 @@ import React ,{useState} from 'react';
         );  
  }
  
- export default logIn;
+ export default LogIn;
