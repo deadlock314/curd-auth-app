@@ -25,7 +25,7 @@ router.route('/post').post((req,res)=>{
            res.status(400).json({userAdded:false})
         }
         else{
-           resstatus(201).json({userAdded:true}) 
+           res.status(201).json({userAdded:true}) 
         }
     })
 

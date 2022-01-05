@@ -44,8 +44,7 @@ return (
 		type="number"
 		onChange={changeHandler}
 		/>
-	</label>
-	<br />
+	</label><br />
     <label>
 		Salary:
 		<input
@@ -54,7 +53,7 @@ return (
 		type="number"
 		onChange={changeHandler}
 		/>
-	</label>
+	</label><br />
 	<button>Submit</button>
 	<button type="reset">Reset</button>
 	</form>

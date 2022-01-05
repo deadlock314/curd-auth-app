@@ -31,7 +31,9 @@ mongoose.connection.once('open',(err)=>{
     console.log('db connected');
 });
 const routes=require('./routes');
-const authRoutes=require('./auth/auth-routes');
-server.use('/routes',routes);
-server.use('/',authRoutes);
+const SignUpRoute=require('./auth/authRoute/signUpRoute');
+const logInRoute=require('./auth/authRoute/logInRoute');
 
+server.use('/',SignUpRoute);
+server.use('/',logInRoute);
+server.use('/routes',routes);

@@ -3,26 +3,38 @@ import React ,{useState} from 'react';
 
  function LogIn() {
     
-        const [user ,setUser] = useState({email:'' ,password:''});
-
-        const changeHandler =(e)=>{
-            setUser(...user ,{[e.target.value]:e.target.value});
+        let [user ,setUser] = useState({email:'' ,password:''});
+     
+        const changeHandler =e=>{
+            const {name , value}=e.target;
+            setUser((user) =>({
+                ...user,  [name]: value 
+            }));
     
         };
     
         const clickHandler =(e)=>{
             e.preventDefault();
-            axios.post('http://localhost:5000/auth/login',user).then(setUser ({email:'' ,password:''}))
+            axios.post('http://localhost:5000/login',user).then((res)=>{
+                if(res.data.isUserLoggedIn){
+                    alert('user succesfully Logged-In') 
+                     setUser ({email:'' ,password:''})
+                }
+                else{
+                    alert('something went wrong try again');
+                }
+            })
             
         }
     
-        return ( 
-            <from>
-                <label htmlFor="email" >Email : <input type="email" id='email' value={user.email} onChange={changeHandler}/>  </label>
-                <label htmlFor="password" > Password : <input type='text' id='password' value={user.password}  onChange={changeHandler}/> </label>
+        return (
+          
+            <form>
+                <label htmlFor="email" >Email : <input type="email" name="email" id='email' value={user.email} onChange={changeHandler}/>  </label><br/>
+                <label htmlFor="password" > Password : <input type='text' name="password" id='password' value={user.password}  onChange={changeHandler}/> </label><br />
                 <button type='submit' onClick={clickHandler}>logIn</button>
-            </from>
-       
+            </form>
+           
         );  
  }
  

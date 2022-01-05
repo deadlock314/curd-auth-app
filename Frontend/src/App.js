@@ -3,8 +3,8 @@ import {BrowserRouter,Route,Routes} from "react-router-dom";
 import NavBar from './NavBar';
 import AddData from './component/dataComponent/addData';
 import Data from './component/dataComponent/Data';
-import LogIn from './component/authComponent/logIn';
-import SignUp from './component/authComponent/signUp';
+import LogIn from './component/authComponent/LogIn';
+import SignUp from './component/authComponent/SignUp';
 
 
 function App() {

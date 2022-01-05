@@ -5,24 +5,37 @@ function SignUp() {
 
     const [user ,setUser] = useState({name:'',email:'' ,password:''});
 
-    const changeHandler =(e)=>{
-        setUser(...user ,{[e.target.value]:e.target.value});
+    function changeHandler(e) {
+        const { name, value } = e.target
+        setUser((user) =>({
+            ...user,  [name]: value 
+        }));
 
     };
 
     const clickHandler =(e)=>{
         e.preventDefault();
-        axios.post('http://localhost:5000/auth/signup',user).then(setUser ({name:'',email:'' ,password:''}))
+        axios.post('http://localhost:5000/signup',user).then((res)=>{
+        if(res.data.isUserSignedUp){
+            alert('user succesfully signed up') 
+           
+            setUser ({name:'',email:'' ,password:''})
+        }  
+        else{
+
+          alert('something went wrong try again');
+            
+        }
         
-    }
+    })}
 
     return ( 
-        <from>
-            <label htmlFor="name" >Name : <input type='text' id='name' value={user.name} onChange={changeHandler} /></label>
-            <label htmlFor="email" >Email : <input type="email" id='email' value={user.email} onChange={changeHandler}/>  </label>
-            <label htmlFor="password" > Password : <input type='text' id='password' value={user.password}  onChange={changeHandler}/> </label>
+        <form>
+            <label htmlFor="name" >Name : <input type='text' name='name' id='name' value={user.name} onChange={changeHandler} /></label><br />
+            <label htmlFor="email" >Email : <input type="email" name='email' id='email' value={user.email} onChange={changeHandler}/>  </label><br />
+            <label htmlFor="password" > Password : <input type='text' name='password' id='password' value={user.password}  onChange={changeHandler}/> </label><br />
             <button type='submit' onClick={clickHandler}>signUp</button>
-        </from>
+        </form>
    
     );
 }
