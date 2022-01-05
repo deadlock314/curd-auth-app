@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React ,{useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
  function LogIn() {
-    
+    const redirect = useNavigate();
         let [user ,setUser] = useState({email:'' ,password:''});
      
         const changeHandler =e=>{
@@ -19,6 +20,7 @@ import React ,{useState} from 'react';
                 if(res.data.isUserLoggedIn){
                     alert('user succesfully Logged-In') 
                      setUser ({email:'' ,password:''})
+                    redirect("/");
                 }
                 else{
                     alert('something went wrong try again');

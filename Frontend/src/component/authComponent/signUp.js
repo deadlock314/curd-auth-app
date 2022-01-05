@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
-
+    const redirect = useNavigate();
     const [user ,setUser] = useState({name:'',email:'' ,password:''});
 
     function changeHandler(e) {
@@ -17,7 +18,8 @@ function SignUp() {
         e.preventDefault();
         axios.post('http://localhost:5000/signup',user).then((res)=>{
         if(res.data.isUserSignedUp){
-            alert('user succesfully signed up') 
+            alert('user succesfully signed up');
+            redirect("/login"); 
            
             setUser ({name:'',email:'' ,password:''})
         }  

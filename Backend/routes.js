@@ -1,4 +1,5 @@
 const router=require('express').Router();
+const authTesterMiddleware = require('./auth/authMiddleware/authTesterMid');
 let Person = require('./schema/personSchema');
 
 router.route('/').get((req,res)=>{
@@ -15,7 +16,7 @@ router.route('/').get((req,res)=>{
    
 });
 
-router.route('/post').post((req,res)=>{
+router.route('/post').post(authTesterMiddleware,(req,res)=>{
     const person=req.body;
 
     const newPerson = new Person(person);
