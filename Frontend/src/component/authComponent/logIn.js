@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
     
         const clickHandler =(e)=>{
             e.preventDefault();
-            axios.post('http://localhost:5000/login',user).then((res)=>{
+            axios.post('http://localhost:5000/login',user,{'credentials':'same-origin'}).then((res)=>{
                 if(res.data.isUserLoggedIn){
                     alert('user succesfully Logged-In') 
                      setUser ({email:'' ,password:''})

@@ -10,7 +10,7 @@ router.route('/').get((req,res)=>{
              res.end(err);
          }
          else{
-            res.json(doc)
+            res.cookie('name','arjun',{maxAge:1000*60*60,httpOnly:true,domain:'.localhost.com'}).json(doc);
          }
     })
    
@@ -23,10 +23,10 @@ router.route('/post').post(authTesterMiddleware,(req,res)=>{
 
     newPerson.save((err)=>{
         if(err){
-           res.status(400).json({userAdded:false})
+           res.status(400).json({isUserAdded:false,isUserLoggedIn:true})
         }
         else{
-           res.status(201).json({userAdded:true}) 
+           res.status(201).json({isUserAdded:true,isUserLoggedIn:true}) 
         }
     })
 

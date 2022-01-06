@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function AddData() {
 
 const [person, setPerson] = useState(
@@ -7,12 +8,26 @@ const [person, setPerson] = useState(
 	age: 0,
     salary : 0
 });
+const redirect=useNavigate()
 
 const clickHandler = e => {
 	e.preventDefault();
-	 axios.post('http://localhost:5000/routes/post',person).then(setPerson({name: '',
-	age: 0,
-    salary : 0}))
+	 axios.post('http://localhost:5000/routes/post',person).then((res)=>{
+		if(res.data.isUserAdded && res.data.isUserLoggedIn){
+			alert('user added succuessfully');
+			
+		}
+		else{
+			alert('please login to add data');
+			redirect('/');
+
+		}
+
+  setPerson({name: '',age: 0,salary : 0})
+	 }).catch((err)=>{
+		 alert('please login to add data');
+			redirect('/');
+	 })
      
 };
 
