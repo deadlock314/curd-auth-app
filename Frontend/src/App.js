@@ -11,10 +11,11 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar/>
-    <Routes>
+  <Routes>
   <Route path='/data' element={<Data/>}/>
   <Route path='addData'  element={<AddData/>}/>
   <Route path='/login' element={<LogIn/>} />
+  <Route path='/logout' element={<LogOut/>} />
   <Route path='/signup' element={<SignUp/>} />
   </Routes>
 

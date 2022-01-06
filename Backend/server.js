@@ -33,7 +33,8 @@ mongoose.connection.once('open',(err)=>{
 const routes=require('./routes');
 const SignUpRoute=require('./auth/authRoute/signUpRoute');
 const logInRoute=require('./auth/authRoute/logInRoute');
-
+const logOutRoute=require('./auth/authRoute/logOutRoute')
 server.use('/',SignUpRoute);
 server.use('/',logInRoute);
+server.use('/',logOutRoute);
 server.use('/routes',routes);
