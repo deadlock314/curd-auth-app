@@ -5,7 +5,7 @@ import AddData from './component/dataComponent/addData';
 import Data from './component/dataComponent/Data';
 import LogIn from './component/authComponent/LogIn';
 import SignUp from './component/authComponent/SignUp';
-
+import LogOut from './component/authComponent/LogOut';
 
 function App() {
   return (

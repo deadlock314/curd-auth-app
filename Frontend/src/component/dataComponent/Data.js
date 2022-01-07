@@ -13,7 +13,8 @@ function Data() {
 
      
         useEffect(() => {
-            axios.get('http://localhost:5000/routes').then(response=>{
+            axios.get('http://localhost:5000/routes',{withCredentials: true
+        }).then(response=>{
             setPerson(response.data);
            }).catch({})
         }, []);

@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router';
 function LogOut() {
 const redirect=useNavigate();
 
-const clickHandler=(e)=>{
+const ClickHandler=(e)=>{
     e.preventDefault()
-    axios.get('http://localhost:5000/logout').then((res)=>{
-        if(isUserLoggedOut) {
+    axios.get('http://localhost:5000/logout',{withCredentials: true
+}).then((res)=>{
+        if(res.data.isUserLoggedOut) {
           alert('succuessfully logged out');
           redirect('/')
 

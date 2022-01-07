@@ -19,9 +19,10 @@ function SignUp() {
         axios.post('http://localhost:5000/signup',user).then((res)=>{
         if(res.data.isUserSignedUp){
             alert('user succesfully signed up');
-            redirect("/login"); 
+             
            
             setUser ({name:'',email:'' ,password:''})
+            redirect("/LogIn");
         }  
         else{
 
