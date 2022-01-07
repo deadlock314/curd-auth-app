@@ -12,7 +12,7 @@ const redirect=useNavigate()
 
 const clickHandler = e => {
 	e.preventDefault();
-	 axios.post('http://localhost:5000/routes/post',person).then((res)=>{
+	 axios.post('http://localhost:5000/routes/post',person,{withCredentials:true}).then((res)=>{
 		if(res.data.isUserAdded && res.data.isUserLoggedIn){
 			alert('user added succuessfully');
 			

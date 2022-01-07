@@ -6,6 +6,7 @@ const user=require('../../schema/userSchema')
 const authTesterMiddleware=(req,res,next)=>{
     
     jwt.verify(req.cookies.auth,'skhatLaunda',(err,data)=>{
+        console.log(data)
        
     if(typeof(data)=='undefined')
     {
@@ -13,9 +14,11 @@ const authTesterMiddleware=(req,res,next)=>{
     }
     else 
         { 
-            user.findOne({email:data.email},(err,doc)=> {
-                if(doc.email==data.email){
+            user.findOne({email:data.doc.email},(err,doc)=> {
+                if(doc.email==data.doc.email){
+                    console.log('d')
                    next();
+                   
                 }
                 else{
                res.status(302).json({isUserAdded:false,isUserLoggedIn:false});
