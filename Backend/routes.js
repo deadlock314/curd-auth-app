@@ -10,7 +10,7 @@ router.route('/').get((req,res)=>{
              res.end(err);
          }
          else{
-            res.cookie('name','arjun',{maxAge:1000*60*60,httpOnly:true,domain:'.localhost.com'}).json(doc);
+            res.cookie('time', new Date(),{httpOnly:true,secure:false,SameSite:false}).json(doc);
          }
     })
    
