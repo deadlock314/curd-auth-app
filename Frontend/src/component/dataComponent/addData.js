@@ -3,16 +3,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 function AddData() {
 
-const [person, setPerson] = useState(
-	{name: '',
-	age: 0,
-    salary : 0
-});
+const [persons,setPerson]=useState({name:'x',imgUrl:'x',DOB:'x',city:'x',country:'x'})
 const redirect=useNavigate()
 
 const clickHandler = e => {
 	e.preventDefault();
-	 axios.post('http://localhost:5000/routes/post',person,{withCredentials:true}).then((res)=>{
+	 axios.post('http://localhost:5000/routes/post',persons,{withCredentials:true}).then((res)=>{
 		if(res.data.isUserAdded && res.data.isUserLoggedIn){
 			alert('user added succuessfully');
 			
@@ -23,7 +19,7 @@ const clickHandler = e => {
 
 		}
 
-  setPerson({name: '',age: 0,salary : 0})
+  setPerson({name:'x',imgUrl:'x',DOB:'x',city:'x',country:'x'})
 	 }).catch((err)=>{
 		 alert('please login to add data');
 			redirect('/');
@@ -31,9 +27,9 @@ const clickHandler = e => {
      
 };
 
-const changeHandler = e => {
+const changeHandler = (e) => {
 	setPerson({
-	...person,
+	...persons,
 	[e.target.name]: e.target.value
 	}); 
    
@@ -43,32 +39,26 @@ return (
 	<div>
 	<form onSubmit={clickHandler}>
 	<label>
-		Name:
-		<input
-		value={person.name}
-		name="name"
-		onChange={changeHandler}
-		/>
-	</label>
-	<br />
+		Name : <input
+		value={persons.name} type="text" name="name" onChange={changeHandler} />
+	</label><br />
 	<label>
-		Age:
-		<input
-		value={person.age}
-		name="age"
-		type="number"
-		onChange={changeHandler}
-		/>
+		Date-of-Birth : <input
+		value={persons.DOB} type="date" name="DOB"  onChange={changeHandler} />
 	</label><br />
-    <label>
-		Salary:
-		<input
-		value={person.salary}
-		name="salary"
-		type="number"
-		onChange={changeHandler}
-		/>
+	<label>
+		Image-Url : <input
+		value={persons.imgUrl} type="text" name="imgUrl" onChange={changeHandler} />
 	</label><br />
+	<label>
+		City : <input
+		value={persons.city} type="text" name="city" onChange={changeHandler} />
+	</label><br />
+	<label>
+		Country : <input
+		value={persons.country} type="text" name="country" onChange={changeHandler} />
+	</label><br />
+	<br />
 	<button>Submit</button>
 	<button type="reset">Reset</button>
 	</form>

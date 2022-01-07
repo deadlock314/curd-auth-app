@@ -8,6 +8,7 @@ router.route('/').get((req,res)=>{
     Person.find({},(err,doc)=>{
          if(err){
              res.end(err);
+             console.log(err)
          }
          else{
             res.cookie('time', new Date(),{httpOnly:true,secure:false,SameSite:false}).json(doc);
@@ -35,10 +36,10 @@ router.route('/post').post(authTesterMiddleware,(req,res)=>{
 router.route('/delete/:id').delete((req,res)=>{
     Person.findByIdAndDelete(req.params.id,(err)=>{
         if(err){
-             res.status(400).json({userDelete:false})
+             res.status(400).json({isUserDeleted:false})
         }
         else{
-             res.status(200).json({userDelete:true})
+             res.status(200).json({isUserDeleted:true})
         }
     })
 

@@ -5,27 +5,21 @@ const mongoose = require('mongoose');
 const PersonSchema= new  mongoose.Schema(
     {
         name:{
-            type:String,
-            required:true,
-            minlength:3,
-            default:'name'
+            type:String, required:true,minlength:3,default:'name'
         }
         ,
-        age:{
-            
-            type:Number,
-            required:true,
-            minlength:1,
-            default:10
-            
+        DOB:{
+            type:Date ,required:true, minlength:3,default:'DOB'
         },
-        salary:{
-            type:Number,
-             required:true,
-            minlength:3,
-            default:1.32
-            
-        }
+        imgUrl:{
+            type:String ,required:true,default:'imgUrl'
+        },
+        city:{
+            type:String ,required:true,default:'city'
+        },
+        country:{
+            type:String ,required:true,default:'country'
+        },
     }
 );
 

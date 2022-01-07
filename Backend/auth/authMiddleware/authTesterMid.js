@@ -16,7 +16,6 @@ const authTesterMiddleware=(req,res,next)=>{
         { 
             user.findOne({email:data.doc.email},(err,doc)=> {
                 if(doc.email==data.doc.email){
-                    console.log('d')
                    next();
                    
                 }

@@ -1,57 +1,60 @@
-import React, { Component } from 'react';
-import {useEffect ,useState} from 'react';
+import React, { Component, useEffect } from 'react';
+import {useState} from 'react';
 import axios from 'axios';
-
-
 
 function Data() {
     
     
-    const [person,setPerson]=useState([{_id:1,name:"nae",age:7,salary:99},])
-
+    const [persons,setPerson]=useState([{_id:1,name:'x',imgUrl:'x',DOB:'x',city:'x',country:'x'}])
    
-
-     
-        useEffect(() => {
-            axios.get('http://localhost:5000/routes',{withCredentials: true
+    useEffect(()=>{
+        axios.get('http://localhost:5000/routes',{withCredentials: true
         }).then(response=>{
             setPerson(response.data);
-           }).catch({})
-        }, []);
-     
-     
-
-    return ( 
-
-        <div>
-     {   person.map((x)=>{
-         return(
-             <div style={{marginLeft:'50px',padding:"5px"}} key={x._id} > 
-        <h1>name :{x.name}</h1>
-        <h2>age :{x.age}</h2>
-        <h2>salary :{x.salary}</h2> 
-         {/* <button style={{margin:'10px',padding:"6px"}} onclick={UpdateHandler(x._id)}> Edit</button> */}
-          <button style={{margin:'20px',padding:"5px"}} onClick={()=>{
-           
-           axios.delete('http://localhost:5000/routes/delete/'+x._id)
-                
-           axios.get('http://localhost:5000/routes').then(response=>{
-                setPerson(response.data);
-
-            })
-          }
- }> Delete</button>
-        </div>
-         );
-         
-     })
+          
+           }).catch((err)=>{
+               console.log(err)
+           }
+              
+           )
+    },[])
        
+
+    const clickDeleteHandler=(e)=>{
+        
+        axios.delete('http://localhost:5000/routes/delete/'+[e.target.name]).then((res)=>{
+            if(res.data.isUserDeleted)
+              setPerson(persons.filter((key)=>key!==[e.target.name]))
+            else
+               alert('user not deleted something went wrong')
         }
-       
-        </div>
- 
+            
+        ).catch(
+            alert('user not deleted something went wrong')
+        )
+    }
 
-     );
-}
+     
+    return ( 
+        <div>
+        {
+            persons.map((person)=>{
+                return(
+                   
+                 <div style={{marginLeft:'50pperson',padding:"5pperson"}} key={person._id} >
+
+                 <img src={person.imgUrl} alt={person.name}/>
+                  <h3>Name :{person.name}</h3>
+                <p>Date-of-Birth :{person.DOB}</p>
+                  <p>City :{person.city}</p>
+                   <p>Country :{person.country}</p> 
+
+                  <button style={{margin:'20px',padding:"5px"}} name={person._id} onClick={clickDeleteHandler}>Delete</button>
+                  
+               </div>
+                 )
+        })}
+         </div>
+     )};
 
 export default Data;
