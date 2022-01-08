@@ -33,7 +33,7 @@ router.route('/post').post(authTesterMiddleware,(req,res)=>{
 
 });
 
-router.route('/delete/:id').delete((req,res)=>{
+router.route('/delete/:id').delete(authTesterMiddleware,(req,res)=>{
     Person.findByIdAndDelete(req.params.id,(err)=>{
         if(err){
              res.status(400).json({isUserDeleted:false})
@@ -45,7 +45,7 @@ router.route('/delete/:id').delete((req,res)=>{
 
 });
 
-router.route('/update/:id').post((req,res)=>{
+router.route('/update/:id').post(authTesterMiddleware,(req,res)=>{
     Person.findOneAndUpdate(req.params.id,req.body,(err)=>{
         if(err){
             res.status(400).json({isUpdated:false})

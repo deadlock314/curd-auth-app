@@ -26,6 +26,8 @@ import { useNavigate } from 'react-router-dom';
                 else{
                     alert('something went wrong try again');
                 }
+            }).catch((err)=>{
+                    alert('something went wrong try again');
             })
             
         }
