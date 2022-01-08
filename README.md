@@ -2,7 +2,7 @@
 
 This is a full stack app that can perform create ,read , update and delete operation with authentication;
 
-if user authenticated user can person all operation;
+if user authenticated user can perform all operations;
 else user can only read person data; 
 
 ## tech used
