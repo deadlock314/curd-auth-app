@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './styles/navBarStyles.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
+import logOutClickHandler from './helperFun/LogOutHelper';
+
 
 function NavBar() {
    
@@ -27,7 +29,8 @@ function NavBar() {
                     <Link   to='/login' > Log-in </Link>
                 </li>
                 <li>
-                    <Link   to='/logout' > Log-out </Link>
+                
+                    <Link   to='/logout' onClick={logOutClickHandler} > Log-out </Link>
                 </li>
                 <li>
                     <Link  to='/signup' > Sign-up </Link>

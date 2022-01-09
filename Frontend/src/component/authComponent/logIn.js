@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router-dom';
     
         return (
           
-            <form>
+            <form className="form">
                 <label htmlFor="email" >Email : <input type="email" name="email" id='email' value={user.email} onChange={changeHandler}/>  </label><br/>
                 <label htmlFor="password" > Password : <input type='text' name="password" id='password' value={user.password}  onChange={changeHandler}/> </label><br />
                 <button type='submit' onClick={clickHandler}>logIn</button>

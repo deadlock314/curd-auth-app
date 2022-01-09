@@ -5,7 +5,6 @@ import AddData from './component/dataComponent/addData';
 import Data from './component/dataComponent/Data';
 import LogIn from './component/authComponent/LogIn';
 import SignUp from './component/authComponent/SignUp';
-import LogOut from './component/authComponent/LogOut';
 import './styles/index.css';
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
   <Route path='/data' element={<Data/>}/>
   <Route path='addData'  element={<AddData/>}/>
   <Route path='/login' element={<LogIn/>} />
-  <Route path='/logout' element={<LogOut/>} />
+  <Route path='/logout' element={<Data/>} />
   <Route path='/signup' element={<SignUp/>} />
   </Routes>
 

@@ -28,13 +28,13 @@ function Data() {
             persons.map((person)=>{
                 return(
                    
-                 <div style={{marginLeft:'50pperson',padding:"5pperson"}} key={person._id} >
+                 <div style={{marginLeft:'50pperson',padding:"5pperson"}} key={person._id} id="show-data" >
 
                  <img src={person.imgUrl} alt={person.name}/>
-                  <h3>Name :{person.name}</h3>
-                <p>Date-of-Birth :{person.DOB}</p>
-                  <p>City :{person.city}</p>
-                   <p>Country :{person.country}</p> 
+                  <h3>Name : {person.name}</h3>
+                <p>Date-of-Birth : {person.DOB}</p>
+                  <p>City : {person.city}</p>
+                   <p>Country : {person.country}</p> 
 
                   <button style={{margin:'20px',padding:"5px"}}  onClick={()=>{
                        console.log(persons)
