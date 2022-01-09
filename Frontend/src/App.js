@@ -6,6 +6,7 @@ import Data from './component/dataComponent/Data';
 import LogIn from './component/authComponent/LogIn';
 import SignUp from './component/authComponent/SignUp';
 import LogOut from './component/authComponent/LogOut';
+import './styles/index.css';
 
 function App() {
   return (
